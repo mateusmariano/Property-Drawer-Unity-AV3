@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.AttributeUsage(System.AttributeTargets.Field)]
 public class PotionSelectorAttribute : PropertyAttribute
@@ -10,26 +11,22 @@ public class PotionSelectorAttribute : PropertyAttribute
 public class TestBehaviour : MonoBehaviour
 {
 
-	[PotionSelector]
+	[PotionSelectorAttribute]
 	public string potionName;
-	public int numerodapocao;
-	 Potion[] here;
+	Potion[] here;
 
 	public void Start()
 	{
-		here = PotionDB.potionaux;
-		if(numerodapocao < here.Length){
-		potionName = here[numerodapocao].name;
-		Debug.Log("A poçao "+ potionName+ " recupoera: " + here[numerodapocao].heal);
-		}else{
-			Debug.Log("voce nao tem tantas poccoes");
+		//here = PotionDB.instance.potions;
+		Debug.Log(potionName);
+		for(int a = 0; a < PotionDB.instance.potions.Length; a ++){
+			if(potionName == PotionDB.instance.potions[a].name){
+			Debug.Log(PotionDB.instance.potions[a].heal);
+			}
+
 		}
 
-			
 
-
-		// PotionDB.Instance pra acessar o "banco de dados" de pocoes
-		// Imprimir o quanto aquela potion recupera
 	}
 
 }
