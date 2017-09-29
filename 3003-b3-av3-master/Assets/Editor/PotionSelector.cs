@@ -20,7 +20,7 @@ public class PotionSelector : PropertyDrawer {
 			}
 
 	}
-		indice = EditorGUI.Popup(position,indice,pocoes);
+		indice = EditorGUI.Popup(position,label.text,indice,pocoes);
 
 		property.stringValue = pocoes[indice];
 }
